@@ -15,11 +15,16 @@ export default function LandingPage() {
     <div className="min-h-screen bg-white flex flex-col">
       {/* Simple Nav */}
       <nav className="p-6">
-        <div className="max-w-7xl mx-auto flex items-center gap-2">
-          <div className="bg-brand-600 p-1.5 rounded-lg">
-            <Stethoscope className="w-6 h-6 text-white" />
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="bg-brand-600 p-1.5 rounded-lg">
+              <Stethoscope className="w-6 h-6 text-white" />
+            </div>
+            <span className="text-xl font-bold font-display text-brand-900">Dr Kai</span>
           </div>
-          <span className="text-xl font-bold font-display text-brand-900">Dr Kai</span>
+          <Link to="/journey" className="text-sm font-bold text-slate-600 hover:text-brand-600 transition-colors flex items-center gap-2">
+            How it Works <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
       </nav>
 
@@ -91,6 +96,32 @@ export default function LandingPage() {
               </Link>
             </motion.div>
           </div>
+
+          {/* New Journey Map CTA Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="mt-16"
+          >
+            <Link 
+              to="/journey"
+              className="group flex flex-col md:flex-row items-center justify-between p-8 rounded-[2rem] bg-slate-900 text-white hover:bg-slate-800 transition-all shadow-xl"
+            >
+              <div className="flex items-center gap-6 mb-6 md:mb-0">
+                <div className="bg-brand-600 p-4 rounded-2xl group-hover:scale-110 transition-transform">
+                  <Activity className="w-8 h-8 text-white" />
+                </div>
+                <div className="text-left">
+                  <h3 className="text-2xl font-bold mb-1">See the Dr Kai Experience</h3>
+                  <p className="text-slate-400">Explore our interactive Customer Journey Map for doctors and patients.</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 bg-white/10 px-6 py-3 rounded-xl font-bold group-hover:bg-white/20 transition-colors">
+                View Journey Map <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </Link>
+          </motion.div>
 
           <div className="mt-20 text-center">
             <div className="flex items-center justify-center gap-8 opacity-50 grayscale hover:grayscale-0 transition-all">
