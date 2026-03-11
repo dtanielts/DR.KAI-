@@ -16,15 +16,27 @@ export default function LandingPage() {
       {/* Simple Nav */}
       <nav className="p-6">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="bg-brand-600 p-1.5 rounded-lg">
-              <Stethoscope className="w-6 h-6 text-white" />
-            </div>
-            <span className="text-xl font-bold font-display text-brand-900">Dr Kai</span>
+          <div className="flex items-center gap-4">
+            <Link 
+              to="/" 
+              className="flex items-center gap-2 group"
+            >
+              <div className="group-hover:scale-110 transition-transform overflow-hidden w-10 h-10 flex items-center justify-center">
+                <img 
+                  src="https://ffd65ed0edd477d8da02be1e35d3ffc9.cdn.bubble.io/cdn-cgi/image/w=128,h=,f=auto,dpr=1,fit=contain/f1765378714072x376524185866888400/Screenshot%202025-09-29%20at%2018.16.37.png" 
+                  alt="Dr.Kai Logo" 
+                  className="w-full h-full object-contain"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              <span className="text-xl font-bold font-display text-brand-900">Dr.Kai</span>
+            </Link>
           </div>
-          <Link to="/journey" className="text-sm font-bold text-slate-600 hover:text-brand-600 transition-colors flex items-center gap-2">
-            How it Works <ArrowRight className="w-4 h-4" />
-          </Link>
+          <div className="flex items-center gap-6">
+            <Link to="/journey" className="text-sm font-bold text-slate-600 hover:text-brand-600 transition-colors flex items-center gap-2">
+              How it Works <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
         </div>
       </nav>
 
@@ -37,7 +49,7 @@ export default function LandingPage() {
               transition={{ duration: 0.5 }}
             >
               <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6">
-                Welcome to <span className="text-brand-600">Dr Kai</span>
+                Welcome to <span className="text-brand-600">Dr.Kai</span>
               </h1>
               <p className="text-xl text-slate-600 max-w-2xl mx-auto">
                 The next generation of clinical intelligence. Choose your path to get started.
@@ -113,7 +125,7 @@ export default function LandingPage() {
                   <Activity className="w-8 h-8 text-white" />
                 </div>
                 <div className="text-left">
-                  <h3 className="text-2xl font-bold mb-1">See the Dr Kai Experience</h3>
+                  <h3 className="text-2xl font-bold mb-1">See the Dr.Kai Experience</h3>
                   <p className="text-slate-400">Explore our interactive Customer Journey Map for doctors and patients.</p>
                 </div>
               </div>
@@ -138,9 +150,20 @@ export default function LandingPage() {
         </div>
       </main>
 
-      <footer className="p-8 text-center text-slate-400 text-sm flex flex-col items-center gap-4">
-        <Link to="/journey" className="text-brand-600 font-bold hover:underline">View Customer Journey Map</Link>
-        <div>© 2026 Dr Kai. Built for EU Healthcare.</div>
+      <footer className="p-8 text-center text-slate-400 text-sm flex flex-col items-center gap-6 border-t border-slate-100">
+        <div className="flex items-center gap-8">
+          <Link to="/journey" className="text-brand-600 font-bold hover:underline">View Customer Journey Map</Link>
+        </div>
+        <div className="flex items-center gap-2 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all">
+          <img 
+            src="https://ffd65ed0edd477d8da02be1e35d3ffc9.cdn.bubble.io/cdn-cgi/image/w=128,h=,f=auto,dpr=1,fit=contain/f1765378714072x376524185866888400/Screenshot%202025-09-29%20at%2018.16.37.png" 
+            alt="Dr.Kai Logo" 
+            className="w-8 h-8 object-contain"
+            referrerPolicy="no-referrer"
+          />
+          <span className="font-bold text-slate-900">Dr.Kai</span>
+        </div>
+        <div>© 2026 Dr.Kai. Built for EU Healthcare.</div>
       </footer>
     </div>
   );

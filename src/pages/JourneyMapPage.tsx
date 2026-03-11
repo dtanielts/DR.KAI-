@@ -52,7 +52,7 @@ export default function JourneyMapPage() {
     {
       icon: ClipboardList,
       title: "1. Morning Prep",
-      description: "Dr Kai generates structured summaries for the day's appointments, highlighting critical patient history."
+      description: "Dr.Kai generates structured summaries for the day's appointments, highlighting critical patient history."
     },
     {
       icon: Activity,
@@ -62,7 +62,7 @@ export default function JourneyMapPage() {
     {
       icon: Search,
       title: "3. Clinical Support",
-      description: "During consultations, Dr Kai provides instant access to medical databases (1177, Viss) with context-aware search."
+      description: "During consultations, Dr.Kai provides instant access to medical databases (1177, Viss) with context-aware search."
     },
     {
       icon: Zap,
@@ -75,7 +75,7 @@ export default function JourneyMapPage() {
     {
       icon: Calendar,
       title: "1. Appointment Prep",
-      description: "Patient uses Dr Kai to log symptoms and prepare questions, ensuring a productive visit."
+      description: "Patient uses Dr.Kai to log symptoms and prepare questions, ensuring a productive visit."
     },
     {
       icon: ShieldCheck,
@@ -100,12 +100,24 @@ export default function JourneyMapPage() {
       <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
-            <Link to="/" className="flex items-center gap-2">
-              <div className="bg-brand-600 p-1.5 rounded-lg">
-                <Stethoscope className="w-6 h-6 text-white" />
-              </div>
-              <span className="text-xl font-bold font-display text-brand-900">Dr Kai</span>
-            </Link>
+            <div className="flex items-center gap-6">
+              <Link to="/" className="flex items-center gap-2 text-slate-500 hover:text-brand-600 transition-colors group/back">
+                <ArrowRight className="w-5 h-5 rotate-180 group-hover/back:-translate-x-1 transition-transform" />
+                <span className="text-sm font-bold">Back</span>
+              </Link>
+              <div className="w-px h-6 bg-slate-100"></div>
+              <Link to="/" className="flex items-center gap-2 group">
+                <div className="group-hover:scale-110 transition-transform overflow-hidden w-8 h-8 flex items-center justify-center">
+                  <img 
+                    src="https://ffd65ed0edd477d8da02be1e35d3ffc9.cdn.bubble.io/cdn-cgi/image/w=128,h=,f=auto,dpr=1,fit=contain/f1765378714072x376524185866888400/Screenshot%202025-09-29%20at%2018.16.37.png" 
+                    alt="Dr.Kai Logo" 
+                    className="w-full h-full object-contain"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <span className="text-xl font-bold font-display text-brand-900">Dr.Kai</span>
+              </Link>
+            </div>
             <div className="flex items-center gap-4">
               <Link to="/doctor" className="text-sm font-medium text-slate-600 hover:text-brand-600">Doctor Portal</Link>
               <Link to="/patient" className="text-sm font-medium text-slate-600 hover:text-brand-600">Patient Portal</Link>
@@ -119,7 +131,7 @@ export default function JourneyMapPage() {
           <div className="text-center mb-20">
             <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Customer Journey Map</h1>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-              Visualizing the seamless interaction between clinicians and patients powered by Dr Kai's clinical intelligence.
+              Visualizing the seamless interaction between clinicians and patients powered by Dr.Kai's clinical intelligence.
             </p>
           </div>
 
@@ -209,7 +221,7 @@ export default function JourneyMapPage() {
 
       <footer className="bg-white py-12 border-t border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-slate-400 text-sm">© 2026 Dr Kai. Built for EU Healthcare.</p>
+          <p className="text-slate-400 text-sm">© 2026 Dr.Kai. Built for EU Healthcare.</p>
         </div>
       </footer>
     </div>

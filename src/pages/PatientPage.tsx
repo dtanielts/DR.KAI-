@@ -32,12 +32,27 @@ export default function PatientPage() {
       <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
-            <Link to="/" className="flex items-center gap-2">
-              <div className="bg-brand-600 p-1.5 rounded-lg">
-                <Stethoscope className="w-6 h-6 text-white" />
-              </div>
-              <span className="text-xl font-bold font-display text-brand-900">Dr Kai</span>
-            </Link>
+            <div className="flex items-center gap-6">
+              <Link to="/" className="flex items-center gap-2 text-slate-500 hover:text-brand-600 transition-colors group/back">
+                <ArrowRight className="w-5 h-5 rotate-180 group-hover/back:-translate-x-1 transition-transform" />
+                <span className="text-sm font-bold">Back</span>
+              </Link>
+              <div className="w-px h-6 bg-slate-100"></div>
+              <Link 
+                to="/" 
+                className="flex items-center gap-2 group"
+              >
+                <div className="group-hover:scale-110 transition-transform overflow-hidden w-8 h-8 flex items-center justify-center">
+                  <img 
+                    src="https://ffd65ed0edd477d8da02be1e35d3ffc9.cdn.bubble.io/cdn-cgi/image/w=128,h=,f=auto,dpr=1,fit=contain/f1765378714072x376524185866888400/Screenshot%202025-09-29%20at%2018.16.37.png" 
+                    alt="Dr.Kai Logo" 
+                    className="w-full h-full object-contain"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <span className="text-xl font-bold font-display text-brand-900">Dr.Kai</span>
+              </Link>
+            </div>
             <div className="hidden md:flex items-center gap-8">
               <Link to="/journey" className="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors">How it Works</Link>
               <a href="#features" className="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors">Features</a>
@@ -50,9 +65,9 @@ export default function PatientPage() {
 
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="relative pt-20 pb-24 lg:pt-32 lg:pb-40 overflow-hidden">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 opacity-10">
-            <div className="absolute top-0 left-1/4 w-96 h-96 bg-brand-400 rounded-full blur-3xl animate-pulse"></div>
+        <section className="relative pt-20 pb-24 lg:pt-32 lg:pb-40 overflow-hidden bg-brand-50/50">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 opacity-20">
+            <div className="absolute top-0 left-1/4 w-96 h-96 bg-brand-300 rounded-full blur-3xl animate-pulse"></div>
             <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-brand-200 rounded-full blur-3xl animate-pulse delay-700"></div>
           </div>
           
@@ -62,15 +77,15 @@ export default function PatientPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 text-brand-700 text-xs font-bold uppercase tracking-wider mb-6 border border-brand-100">
-                <Heart className="w-3 h-3" /> For Patients
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-100 text-brand-700 text-sm font-bold uppercase tracking-widest mb-8 border border-brand-200">
+                <Heart className="w-4 h-4" /> Patient Portal
               </span>
               <h1 className="text-5xl lg:text-7xl font-bold text-slate-900 mb-6 leading-[1.1]">
                 Your Health Journey, <br />
                 <span className="text-brand-600">Simplified & Secure</span>
               </h1>
               <p className="text-xl text-slate-600 max-w-2xl mx-auto mb-10 leading-relaxed">
-                Dr Kai empowers you to manage your clinical data, prepare for appointments, 
+                Dr.Kai empowers you to manage your clinical data, prepare for appointments, 
                 and communicate with your care team with total privacy.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -245,7 +260,7 @@ export default function PatientPage() {
                   <div className="bg-brand-600 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
                     <CheckCircle2 className="w-6 h-6 text-white" />
                   </div>
-                  <h3 className="text-xl font-bold text-brand-900 mb-2">You're on the list!</h3>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">You're on the list!</h3>
                   <p className="text-brand-700">
                     Thank you for joining, {name}. We'll notify you as soon as a spot opens up in our private beta.
                   </p>
@@ -296,11 +311,14 @@ export default function PatientPage() {
       <footer className="bg-white py-12 border-t border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-            <div className="flex items-center gap-2">
-              <div className="bg-brand-600 p-1 rounded-lg">
-                <Stethoscope className="w-5 h-5 text-white" />
-              </div>
-              <span className="text-lg font-bold font-display text-brand-900">Dr Kai</span>
+            <div className="flex items-center gap-2 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all">
+              <img 
+                src="https://ffd65ed0edd477d8da02be1e35d3ffc9.cdn.bubble.io/cdn-cgi/image/w=128,h=,f=auto,dpr=1,fit=contain/f1765378714072x376524185866888400/Screenshot%202025-09-29%20at%2018.16.37.png" 
+                alt="Dr.Kai Logo" 
+                className="w-6 h-6 object-contain"
+                referrerPolicy="no-referrer"
+              />
+              <span className="text-lg font-bold font-display text-brand-900">Dr.Kai</span>
             </div>
             <div className="flex gap-8 text-sm text-slate-500 font-medium">
               <Link to="/journey" className="hover:text-brand-600">Journey Map</Link>
@@ -309,7 +327,7 @@ export default function PatientPage() {
               <a href="#" className="hover:text-brand-600">Contact</a>
             </div>
             <div className="text-sm text-slate-400">
-              © 2026 Dr Kai. All rights reserved. Built for EU Healthcare.
+              © 2026 Dr.Kai. All rights reserved. Built for EU Healthcare.
             </div>
           </div>
         </div>
