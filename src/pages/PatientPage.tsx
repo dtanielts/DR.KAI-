@@ -302,6 +302,7 @@ export default function PatientPage() {
               <span className="text-lg font-bold font-display text-brand-900">Dr Kai</span>
             </div>
             <div className="flex gap-8 text-sm text-slate-500 font-medium">
+              <Link to="/journey" className="hover:text-brand-600">Journey Map</Link>
               <a href="#" className="hover:text-brand-600">Privacy</a>
               <a href="#" className="hover:text-brand-600">Terms</a>
               <a href="#" className="hover:text-brand-600">Contact</a>

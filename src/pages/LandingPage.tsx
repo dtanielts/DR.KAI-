@@ -107,8 +107,9 @@ export default function LandingPage() {
         </div>
       </main>
 
-      <footer className="p-8 text-center text-slate-400 text-sm">
-        © 2026 Dr Kai. Built for EU Healthcare.
+      <footer className="p-8 text-center text-slate-400 text-sm flex flex-col items-center gap-4">
+        <Link to="/journey" className="text-brand-600 font-bold hover:underline">View Customer Journey Map</Link>
+        <div>© 2026 Dr Kai. Built for EU Healthcare.</div>
       </footer>
     </div>
   );
