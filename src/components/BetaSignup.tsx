@@ -15,13 +15,22 @@ export default function BetaSignup({ id = "signup", className = "" }: BetaSignup
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submission started');
-    setIsSubmitting(true);
     
-    const rawFormId = import.meta.env.VITE_GOOGLE_FORM_ID;
-    const rawNameEntry = import.meta.env.VITE_GOOGLE_FORM_NAME_ENTRY;
-    const rawEmailEntry = import.meta.env.VITE_GOOGLE_FORM_EMAIL_ENTRY;
-    const gaId = import.meta.env.VITE_GA_MEASUREMENT_ID;
+    // Check both import.meta.env and process.env (for Vite define)
+    const getEnv = (key: string) => import.meta.env[key] || (process.env as any)[key];
+    
+    const rawFormId = getEnv('VITE_GOOGLE_FORM_ID');
+    const rawNameEntry = getEnv('VITE_GOOGLE_FORM_NAME_ENTRY');
+    const rawEmailEntry = getEnv('VITE_GOOGLE_FORM_EMAIL_ENTRY');
+    const gaId = getEnv('VITE_GA_MEASUREMENT_ID');
+
+    console.log('Detected VITE_ secrets:', {
+      formId: !!rawFormId,
+      nameEntry: !!rawNameEntry,
+      emailEntry: !!rawEmailEntry
+    });
+    
+    setIsSubmitting(true);
 
     // Clean up IDs safely
     const formId = rawFormId?.trim() || '';
@@ -96,7 +105,7 @@ export default function BetaSignup({ id = "signup", className = "" }: BetaSignup
         ) : (
           <div className="bg-white p-8 md:p-10 rounded-[2.5rem] shadow-2xl shadow-brand-900/5 border border-slate-100 relative z-10">
             <form onSubmit={handleSubmit} className="space-y-5 text-left">
-              {!import.meta.env.VITE_GOOGLE_FORM_ID && (
+              {!(import.meta.env.VITE_GOOGLE_FORM_ID || (process.env as any).VITE_GOOGLE_FORM_ID) && (
                 <div className="bg-amber-50 border border-amber-200 p-4 rounded-xl mb-6 text-amber-800 text-sm">
                   <strong>Developer Note:</strong> Google Form ID is not set in Secrets. Submissions will be logged to the console but not sent to Sheets.
                 </div>

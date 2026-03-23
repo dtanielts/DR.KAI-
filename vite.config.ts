@@ -9,6 +9,10 @@ export default defineConfig(({mode}) => {
     plugins: [react(), tailwindcss()],
     define: {
       'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
+      'process.env.VITE_GOOGLE_FORM_ID': JSON.stringify(env.VITE_GOOGLE_FORM_ID),
+      'process.env.VITE_GOOGLE_FORM_NAME_ENTRY': JSON.stringify(env.VITE_GOOGLE_FORM_NAME_ENTRY),
+      'process.env.VITE_GOOGLE_FORM_EMAIL_ENTRY': JSON.stringify(env.VITE_GOOGLE_FORM_EMAIL_ENTRY),
+      'process.env.VITE_GA_MEASUREMENT_ID': JSON.stringify(env.VITE_GA_MEASUREMENT_ID),
     },
     resolve: {
       alias: {
