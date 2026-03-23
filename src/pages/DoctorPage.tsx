@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { 
   Stethoscope, 
   ShieldCheck, 
@@ -9,22 +9,16 @@ import {
   ArrowRight, 
   CheckCircle2,
   Lock,
-  Database
+  Database,
+  Zap
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
+import DashboardMockup from '../components/DashboardMockup';
+import ClinicianExperienceMockup from '../components/ClinicianExperienceMockup';
+import BetaSignup from '../components/BetaSignup';
 
 export default function DoctorPage() {
-  const [email, setEmail] = useState('');
-  const [name, setName] = useState('');
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Sign up:', { name, email });
-    setSubmitted(true);
-  };
-
   return (
     <div className="min-h-screen flex flex-col">
       {/* Navigation */}
@@ -53,7 +47,6 @@ export default function DoctorPage() {
               </Link>
             </div>
             <div className="hidden md:flex items-center gap-8">
-              <Link to="/journey" className="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors">How it Works</Link>
               <a href="#features" className="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors">Features</a>
               <a href="#security" className="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors">Security</a>
               <a href="#signup" className="bg-brand-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-brand-700 transition-all shadow-sm">Join Beta</a>
@@ -70,32 +63,44 @@ export default function DoctorPage() {
             <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-brand-400 rounded-full blur-3xl animate-pulse delay-700"></div>
           </div>
           
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 text-brand-300 text-sm font-bold uppercase tracking-widest mb-8 border border-white/20 backdrop-blur-sm">
-                <Stethoscope className="w-4 h-4" /> Clinician Portal
-              </span>
-              <h1 className="text-5xl lg:text-7xl font-bold mb-6 leading-[1.1]">
-                Reduce Clinic Admin <br />
-                <span className="text-brand-400">Empower Your Doctors</span>
-              </h1>
-              <p className="text-xl text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed">
-                Dr.Kai provides structured clinical summaries and intelligent triage support, 
-                letting your team focus on patient care instead of paperwork.
-              </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#signup" className="w-full sm:w-auto px-8 py-4 bg-brand-600 text-white rounded-xl font-bold text-lg hover:bg-brand-700 transition-all shadow-lg shadow-brand-200 flex items-center justify-center gap-2 group">
-                  Apply for Beta Access <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </a>
-                <a href="#features" className="w-full sm:w-auto px-8 py-4 bg-white text-slate-700 border border-slate-200 rounded-xl font-bold text-lg hover:bg-slate-50 transition-all">
-                  See How It Works
-                </a>
-              </div>
-            </motion.div>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="text-left"
+              >
+                <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 text-brand-300 text-sm font-bold uppercase tracking-widest mb-8 border border-white/20 backdrop-blur-sm">
+                  <Stethoscope className="w-4 h-4" /> Clinician Portal
+                </span>
+                <h1 className="text-5xl lg:text-7xl font-bold mb-6 leading-[1.1]">
+                  Reduce Clinic Admin <br />
+                  <span className="text-brand-400">Empower Your Doctors</span>
+                </h1>
+                <p className="text-xl text-slate-300 max-w-2xl mb-10 leading-relaxed">
+                  Dr.Kai provides structured clinical summaries and intelligent triage support, 
+                  letting your team focus on patient care instead of paperwork.
+                </p>
+                <div className="flex flex-col sm:flex-row items-center gap-4">
+                  <a href="#signup" className="w-full sm:w-auto px-8 py-4 bg-brand-600 text-white rounded-xl font-bold text-lg hover:bg-brand-700 transition-all shadow-lg shadow-brand-200 flex items-center justify-center gap-2 group">
+                    Apply for Beta Access <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </a>
+                  <a href="#features" className="w-full sm:w-auto px-8 py-4 bg-white text-slate-700 border border-slate-200 rounded-xl font-bold text-lg hover:bg-slate-50 transition-all">
+                    See How It Works
+                  </a>
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="hidden lg:block"
+              >
+                <DashboardMockup type="doctor" />
+              </motion.div>
+            </div>
           </div>
         </section>
 
@@ -120,6 +125,21 @@ export default function DoctorPage() {
                 <div className="text-sm text-slate-500 font-medium">Medical Databases</div>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* Experience Section - Interactive Mockup */}
+        <section className="py-24 bg-slate-50 border-y border-slate-100 overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-20">
+              <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">The Clinician's Path</h2>
+              <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+                Experience how Dr.Kai transforms every stage of your clinical day, 
+                from morning preparation to final documentation.
+              </p>
+            </div>
+
+            <ClinicianExperienceMockup />
           </div>
         </section>
 
@@ -242,66 +262,9 @@ export default function DoctorPage() {
         </section>
 
         {/* Sign Up Section */}
-        <section id="signup" className="py-24 bg-slate-50">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-white p-8 md:p-12 rounded-[2.5rem] shadow-2xl shadow-brand-900/5 border border-slate-100 text-center">
-              <h2 className="text-3xl font-bold text-slate-900 mb-4">Join the Beta Testing</h2>
-              <p className="text-slate-600 mb-10">
-                Help us shape the future of clinical efficiency. Sign up your clinic for early access to Dr.Kai.
-              </p>
-
-              {submitted ? (
-                <motion.div 
-                  initial={{ scale: 0.9, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  className="bg-brand-50 p-8 rounded-2xl border border-brand-100"
-                >
-                  <div className="bg-brand-600 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <CheckCircle2 className="w-6 h-6 text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold text-brand-900 mb-2">Application Received!</h3>
-                  <p className="text-brand-700">
-                    Thank you for your interest, {name}. Our team will reach out to you shortly to discuss the next steps.
-                  </p>
-                </motion.div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-4 text-left">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-bold text-slate-700 mb-2 ml-1">Clinic Name</label>
-                    <input
-                      type="text"
-                      id="name"
-                      required
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      placeholder="e.g. Central Health Clinic"
-                      className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white transition-all"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-bold text-slate-700 mb-2 ml-1">Work Email</label>
-                    <input
-                      type="email"
-                      id="email"
-                      required
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="doctor@clinic.com"
-                      className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white transition-all"
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    className="w-full py-4 bg-brand-600 text-white rounded-2xl font-bold text-lg hover:bg-brand-700 transition-all shadow-lg shadow-brand-200 mt-4"
-                  >
-                    Request Beta Access
-                  </button>
-                  <p className="text-center text-xs text-slate-400 mt-6">
-                    By signing up, you agree to our <a href="#" className="underline">Privacy Policy</a> and <a href="#" className="underline">Terms of Service</a>.
-                  </p>
-                </form>
-              )}
-            </div>
+        <section className="py-24 bg-slate-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <BetaSignup />
           </div>
         </section>
       </main>
@@ -320,7 +283,6 @@ export default function DoctorPage() {
               <span className="text-lg font-bold font-display text-brand-900">Dr.Kai</span>
             </div>
             <div className="flex gap-8 text-sm text-slate-500 font-medium">
-              <Link to="/journey" className="hover:text-brand-600">Journey Map</Link>
               <a href="#" className="hover:text-brand-600">Privacy</a>
               <a href="#" className="hover:text-brand-600">Terms</a>
               <a href="#" className="hover:text-brand-600">Contact</a>

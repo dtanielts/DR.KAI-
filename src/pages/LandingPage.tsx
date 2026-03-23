@@ -9,6 +9,8 @@ import {
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
+import DashboardMockup from '../components/DashboardMockup';
+import BetaSignup from '../components/BetaSignup';
 
 export default function LandingPage() {
   return (
@@ -32,32 +34,60 @@ export default function LandingPage() {
               <span className="text-xl font-bold font-display text-brand-900">Dr.Kai</span>
             </Link>
           </div>
-          <div className="flex items-center gap-6">
-            <Link to="/journey" className="text-sm font-bold text-slate-600 hover:text-brand-600 transition-colors flex items-center gap-2">
-              How it Works <ArrowRight className="w-4 h-4" />
+          <div className="flex items-center gap-8">
+            <Link to="/doctor" className="text-sm font-bold text-slate-600 hover:text-brand-600 transition-colors">
+              For Clinicians
             </Link>
+            <Link to="/patient" className="text-sm font-bold text-slate-600 hover:text-brand-600 transition-colors">
+              For Patients
+            </Link>
+            <a href="#signup" className="bg-brand-600 text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-brand-700 transition-all shadow-sm">
+              Join Beta
+            </a>
           </div>
         </div>
       </nav>
 
-      <main className="flex-grow flex items-center justify-center py-12 px-4">
-        <div className="max-w-5xl w-full">
-          <div className="text-center mb-16">
+      <main className="flex-grow flex items-center justify-center py-12 px-4 lg:py-24">
+        <div className="max-w-7xl w-full">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* Left Column: Text Content */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-left"
             >
-              <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6">
-                Welcome to <span className="text-brand-600">Dr.Kai</span>
+              <h1 className="text-6xl md:text-8xl font-bold text-slate-900 mb-8 leading-[1.1]">
+                Your <br />
+                personal AI <br />
+                <span className="text-brand-600">healthcare coordinator</span>
               </h1>
-              <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-                The next generation of clinical intelligence. Choose your path to get started.
+              <p className="text-2xl text-slate-600 max-w-xl mb-12 leading-relaxed">
+                Prepare for appointments, understand your health, and keep your entire medical history organized.
               </p>
+              <div className="flex flex-col sm:flex-row items-center gap-4">
+                <a 
+                  href="#signup" 
+                  className="w-full sm:w-auto px-10 py-5 bg-brand-600 text-white rounded-2xl font-bold text-xl hover:bg-brand-700 transition-all shadow-xl shadow-brand-200 flex items-center justify-center gap-3 group"
+                >
+                  Join the Beta Testing <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                </a>
+              </div>
+            </motion.div>
+
+            {/* Right Column: Dashboard Mockup */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="relative"
+            >
+              <DashboardMockup type="patient" />
             </motion.div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="mt-32 grid md:grid-cols-2 gap-8">
             {/* Doctor Path */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -78,8 +108,10 @@ export default function LandingPage() {
                   <p className="text-brand-100 text-lg mb-8 leading-relaxed">
                     Streamline your workflow, reduce admin time, and focus on what matters most: your patients.
                   </p>
-                  <div className="flex items-center gap-2 font-bold text-brand-400 group-hover:text-white transition-colors">
-                    Enter Clinician Portal <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  <div className="flex flex-col gap-4">
+                    <div className="flex items-center gap-2 font-bold text-brand-400 group-hover:text-white transition-colors">
+                      Enter Clinician Portal <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    </div>
                   </div>
                 </div>
               </Link>
@@ -102,38 +134,14 @@ export default function LandingPage() {
                 <p className="text-slate-600 text-lg mb-8 leading-relaxed">
                   Manage your health records, prepare for visits, and stay connected with your care team securely.
                 </p>
-                <div className="flex items-center gap-2 font-bold text-brand-600">
-                  Enter Patient Portal <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <div className="flex flex-col gap-4">
+                  <div className="flex items-center gap-2 font-bold text-brand-600">
+                    Enter Patient Portal <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </div>
                 </div>
               </Link>
             </motion.div>
           </div>
-
-          {/* New Journey Map CTA Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="mt-16"
-          >
-            <Link 
-              to="/journey"
-              className="group flex flex-col md:flex-row items-center justify-between p-8 rounded-[2rem] bg-slate-900 text-white hover:bg-slate-800 transition-all shadow-xl"
-            >
-              <div className="flex items-center gap-6 mb-6 md:mb-0">
-                <div className="bg-brand-600 p-4 rounded-2xl group-hover:scale-110 transition-transform">
-                  <Activity className="w-8 h-8 text-white" />
-                </div>
-                <div className="text-left">
-                  <h3 className="text-2xl font-bold mb-1">See the Dr.Kai Experience</h3>
-                  <p className="text-slate-400">Explore our interactive Customer Journey Map for doctors and patients.</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3 bg-white/10 px-6 py-3 rounded-xl font-bold group-hover:bg-white/20 transition-colors">
-                View Journey Map <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </div>
-            </Link>
-          </motion.div>
 
           <div className="mt-20 text-center">
             <div className="flex items-center justify-center gap-8 opacity-50 grayscale hover:grayscale-0 transition-all">
@@ -147,13 +155,12 @@ export default function LandingPage() {
               </div>
             </div>
           </div>
+
+          <BetaSignup className="mt-32" />
         </div>
       </main>
 
       <footer className="p-8 text-center text-slate-400 text-sm flex flex-col items-center gap-6 border-t border-slate-100">
-        <div className="flex items-center gap-8">
-          <Link to="/journey" className="text-brand-600 font-bold hover:underline">View Customer Journey Map</Link>
-        </div>
         <div className="flex items-center gap-2 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all">
           <img 
             src="https://ffd65ed0edd477d8da02be1e35d3ffc9.cdn.bubble.io/cdn-cgi/image/w=128,h=,f=auto,dpr=1,fit=contain/f1765378714072x376524185866888400/Screenshot%202025-09-29%20at%2018.16.37.png" 
