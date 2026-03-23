@@ -11,10 +11,63 @@ export default function BetaSignup({ id = "signup", className = "" }: BetaSignup
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Beta signup:', { name, email });
+    console.log('Form submission started');
+    setIsSubmitting(true);
+    
+    const rawFormId = import.meta.env.VITE_GOOGLE_FORM_ID;
+    const rawNameEntry = import.meta.env.VITE_GOOGLE_FORM_NAME_ENTRY;
+    const rawEmailEntry = import.meta.env.VITE_GOOGLE_FORM_EMAIL_ENTRY;
+    const gaId = import.meta.env.VITE_GA_MEASUREMENT_ID;
+
+    // Clean up IDs safely
+    const formId = rawFormId?.trim() || '';
+    const nameEntry = rawNameEntry?.trim() 
+      ? (rawNameEntry.trim().startsWith('entry.') ? rawNameEntry.trim() : `entry.${rawNameEntry.trim()}`)
+      : '';
+    const emailEntry = rawEmailEntry?.trim()
+      ? (rawEmailEntry.trim().startsWith('entry.') ? rawEmailEntry.trim() : `entry.${rawEmailEntry.trim()}`)
+      : '';
+
+    const isConfigured = formId && nameEntry && emailEntry;
+
+    if (isConfigured) {
+      const formUrl = `https://docs.google.com/forms/d/e/${formId}/formResponse`;
+      const formData = new FormData();
+      formData.append(nameEntry, name);
+      formData.append(emailEntry, email);
+
+      console.log('Submitting to Google Form:', formUrl);
+      
+      try {
+        await fetch(formUrl, {
+          method: 'POST',
+          mode: 'no-cors',
+          body: formData
+        });
+        console.log('Beta signup successfully sent to Google Forms');
+        
+        // Track event if GA is configured
+        if (gaId && (window as any).gtag) {
+          (window as any).gtag('event', 'beta_signup', {
+            'event_category': 'engagement',
+            'event_label': 'Beta Signup Form'
+          });
+        }
+      } catch (error) {
+        console.error('Network error during Google Form submission:', error);
+      }
+    } else {
+      console.log('Beta signup (mock):', { name, email });
+      console.warn('Google Form configuration incomplete. Check your Secrets panel.');
+      // Small delay to simulate network for mock
+      await new Promise(resolve => setTimeout(resolve, 800));
+    }
+
+    setIsSubmitting(false);
     setSubmitted(true);
   };
 
@@ -30,7 +83,7 @@ export default function BetaSignup({ id = "signup", className = "" }: BetaSignup
           <motion.div 
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            className="bg-white p-10 rounded-[2.5rem] border border-brand-100 shadow-xl shadow-brand-500/5"
+            className="bg-white p-10 rounded-[2.5rem] border border-brand-100 shadow-xl shadow-brand-500/5 relative z-10"
           >
             <div className="bg-brand-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-brand-200">
               <CheckCircle2 className="w-8 h-8 text-white" />
@@ -41,8 +94,13 @@ export default function BetaSignup({ id = "signup", className = "" }: BetaSignup
             </p>
           </motion.div>
         ) : (
-          <div className="bg-white p-8 md:p-10 rounded-[2.5rem] shadow-2xl shadow-brand-900/5 border border-slate-100">
+          <div className="bg-white p-8 md:p-10 rounded-[2.5rem] shadow-2xl shadow-brand-900/5 border border-slate-100 relative z-10">
             <form onSubmit={handleSubmit} className="space-y-5 text-left">
+              {!import.meta.env.VITE_GOOGLE_FORM_ID && (
+                <div className="bg-amber-50 border border-amber-200 p-4 rounded-xl mb-6 text-amber-800 text-sm">
+                  <strong>Developer Note:</strong> Google Form ID is not set in Secrets. Submissions will be logged to the console but not sent to Sheets.
+                </div>
+              )}
               <div className="grid md:grid-cols-2 gap-5">
                 <div>
                   <label htmlFor="beta-name" className="block text-sm font-bold text-slate-700 mb-2 ml-1">Full Name / Clinic Name</label>
@@ -71,9 +129,19 @@ export default function BetaSignup({ id = "signup", className = "" }: BetaSignup
               </div>
               <button
                 type="submit"
-                className="w-full py-5 bg-brand-600 text-white rounded-2xl font-bold text-xl hover:bg-brand-700 transition-all shadow-xl shadow-brand-200 flex items-center justify-center gap-3 group"
+                disabled={isSubmitting}
+                className={`w-full py-5 bg-brand-600 text-white rounded-2xl font-bold text-xl transition-all shadow-xl shadow-brand-200 flex items-center justify-center gap-3 group ${isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:bg-brand-700'}`}
               >
-                Join the Beta <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                {isSubmitting ? (
+                  <>
+                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    Processing...
+                  </>
+                ) : (
+                  <>
+                    Join the Beta <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                  </>
+                )}
               </button>
               <p className="text-center text-xs text-slate-400 mt-6">
                 By joining, you agree to our <a href="#" className="underline hover:text-brand-600">Privacy Policy</a> and <a href="#" className="underline hover:text-brand-600">Terms of Service</a>.
