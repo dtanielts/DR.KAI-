@@ -57,28 +57,28 @@ export default function DoctorPage() {
 
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="relative pt-20 pb-24 lg:pt-32 lg:pb-40 overflow-hidden bg-slate-900 text-white">
+        <section className="relative pt-12 pb-20 md:pt-20 md:pb-24 lg:pt-32 lg:pb-40 overflow-hidden bg-slate-900 text-white">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 opacity-20">
             <div className="absolute top-0 left-1/4 w-96 h-96 bg-brand-600 rounded-full blur-3xl animate-pulse"></div>
             <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-brand-400 rounded-full blur-3xl animate-pulse delay-700"></div>
           </div>
           
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="grid lg:grid-cols-2 gap-12 md:gap-16 items-center">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
                 className="text-left"
               >
-                <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 text-brand-300 text-sm font-bold uppercase tracking-widest mb-8 border border-white/20 backdrop-blur-sm">
+                <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 text-brand-300 text-xs md:text-sm font-bold uppercase tracking-widest mb-6 md:mb-8 border border-white/20 backdrop-blur-sm">
                   <Stethoscope className="w-4 h-4" /> Clinician Portal
                 </span>
-                <h1 className="text-5xl lg:text-7xl font-bold mb-6 leading-[1.1]">
+                <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold mb-4 md:mb-6 leading-[1.1]">
                   Reduce Clinic Admin <br />
                   <span className="text-brand-400">Empower Your Doctors</span>
                 </h1>
-                <p className="text-xl text-slate-300 max-w-2xl mb-10 leading-relaxed">
+                <p className="text-lg md:text-xl text-slate-300 max-w-2xl mb-8 md:mb-10 leading-relaxed">
                   Dr.Kai provides structured clinical summaries and intelligent triage support, 
                   letting your team focus on patient care instead of paperwork.
                 </p>
@@ -86,7 +86,7 @@ export default function DoctorPage() {
                   <a href="#signup" className="w-full sm:w-auto px-8 py-4 bg-brand-600 text-white rounded-xl font-bold text-lg hover:bg-brand-700 transition-all shadow-lg shadow-brand-200 flex items-center justify-center gap-2 group">
                     Apply for Beta Access <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </a>
-                  <a href="#features" className="w-full sm:w-auto px-8 py-4 bg-white text-slate-700 border border-slate-200 rounded-xl font-bold text-lg hover:bg-slate-50 transition-all">
+                  <a href="#features" className="w-full sm:w-auto px-8 py-4 bg-white text-slate-700 border border-slate-200 rounded-xl font-bold text-lg hover:bg-slate-50 transition-all text-center">
                     See How It Works
                   </a>
                 </div>
@@ -203,7 +203,7 @@ export default function DoctorPage() {
         </section>
 
         {/* Security Section */}
-        <section id="security" className="py-24 bg-brand-900 text-white overflow-hidden relative">
+        <section id="security" className="py-16 md:py-24 bg-brand-900 text-white overflow-hidden relative">
           <div className="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none">
             <svg viewBox="0 0 400 400" className="w-full h-full">
               <path d="M0 400 L400 0" stroke="currentColor" strokeWidth="1" fill="none" />
@@ -215,10 +215,10 @@ export default function DoctorPage() {
           </div>
           
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="grid lg:grid-cols-2 gap-12 md:gap-16 items-center">
               <div>
-                <h2 className="text-3xl lg:text-4xl font-bold mb-6">Medical-Grade Security & Privacy</h2>
-                <p className="text-brand-100 text-lg mb-8 leading-relaxed">
+                <h2 className="text-3xl md:text-4xl font-bold mb-6">Medical-Grade Security & Privacy</h2>
+                <p className="text-brand-100 text-base md:text-lg mb-8 leading-relaxed">
                   We understand the sensitivity of medical data. Dr.Kai is built from the ground up with 
                   privacy enhancement technology to meet the highest standards of healthcare.
                 </p>
@@ -229,31 +229,31 @@ export default function DoctorPage() {
                     "Structured patient modeling with strict access controls",
                     "AI with clinical guardrails and human-in-the-loop design"
                   ].map((item, idx) => (
-                    <div key={idx} className="flex items-center gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-brand-400" />
-                      <span className="text-brand-50 font-medium">{item}</span>
+                    <div key={idx} className="flex items-start gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-brand-400 shrink-0 mt-0.5" />
+                      <span className="text-brand-50 font-medium text-sm md:text-base">{item}</span>
                     </div>
                   ))}
                 </div>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm p-8 rounded-3xl border border-white/20">
-                <div className="flex items-center gap-4 mb-8">
+              <div className="bg-white/10 backdrop-blur-sm p-6 md:p-8 rounded-3xl border border-white/20">
+                <div className="flex items-center gap-4 mb-6 md:mb-8">
                   <div className="bg-brand-500 p-3 rounded-2xl">
-                    <Lock className="w-8 h-8 text-white" />
+                    <Lock className="w-6 h-6 md:w-8 md:h-8 text-white" />
                   </div>
                   <div>
-                    <div className="text-xl font-bold">Secure Infrastructure</div>
-                    <div className="text-brand-300 text-sm">EU-Based Data Centers</div>
+                    <div className="text-lg md:text-xl font-bold">Secure Infrastructure</div>
+                    <div className="text-brand-300 text-xs md:text-sm">EU-Based Data Centers</div>
                   </div>
                 </div>
-                <div className="space-y-6">
+                <div className="space-y-4 md:space-y-6">
                   <div className="bg-white/5 p-4 rounded-xl border border-white/10">
-                    <div className="text-xs font-bold text-brand-400 uppercase tracking-wider mb-1">Data Sovereignty</div>
-                    <p className="text-sm text-brand-100">All clinical data is stored and processed within the EU to comply with GDPR and local healthcare regulations.</p>
+                    <div className="text-[10px] md:text-xs font-bold text-brand-400 uppercase tracking-wider mb-1">Data Sovereignty</div>
+                    <p className="text-xs md:text-sm text-brand-100">All clinical data is stored and processed within the EU to comply with GDPR and local healthcare regulations.</p>
                   </div>
                   <div className="bg-white/5 p-4 rounded-xl border border-white/10">
-                    <div className="text-xs font-bold text-brand-400 uppercase tracking-wider mb-1">Audit Trails</div>
-                    <p className="text-sm text-brand-100">Comprehensive logging and audit trails for every data access event, ensuring full transparency.</p>
+                    <div className="text-[10px] md:text-xs font-bold text-brand-400 uppercase tracking-wider mb-1">Audit Trails</div>
+                    <p className="text-xs md:text-sm text-brand-100">Comprehensive logging and audit trails for every data access event, ensuring full transparency.</p>
                   </div>
                 </div>
               </div>

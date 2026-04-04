@@ -81,10 +81,10 @@ export default function BetaSignup({ id = "signup", className = "" }: BetaSignup
   };
 
   return (
-    <section id={id} className={`py-24 bg-slate-50 rounded-[3rem] border border-slate-100 text-center px-8 ${className}`}>
+    <section id={id} className={`py-16 md:py-24 bg-slate-50 rounded-[2rem] md:rounded-[3rem] border border-slate-100 text-center px-4 md:px-8 ${className}`}>
       <div className="max-w-2xl mx-auto">
-        <h2 className="text-4xl font-bold text-slate-900 mb-6">Join the Beta Testing</h2>
-        <p className="text-xl text-slate-600 mb-10 leading-relaxed">
+        <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4 md:mb-6">Join the Beta Testing</h2>
+        <p className="text-lg md:text-xl text-slate-600 mb-8 md:mb-10 leading-relaxed">
           Be among the first to experience Dr.Kai. Help us shape the future of EU healthcare coordination.
         </p>
 
@@ -92,27 +92,27 @@ export default function BetaSignup({ id = "signup", className = "" }: BetaSignup
           <motion.div 
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            className="bg-white p-10 rounded-[2.5rem] border border-brand-100 shadow-xl shadow-brand-500/5 relative z-10"
+            className="bg-white p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] border border-brand-100 shadow-xl shadow-brand-500/5 relative z-10"
           >
-            <div className="bg-brand-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-brand-200">
-              <CheckCircle2 className="w-8 h-8 text-white" />
+            <div className="bg-brand-600 w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6 shadow-lg shadow-brand-200">
+              <CheckCircle2 className="w-6 h-6 md:w-8 md:h-8 text-white" />
             </div>
-            <h3 className="text-2xl font-bold text-slate-900 mb-3">You're on the list!</h3>
-            <p className="text-slate-600">
+            <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-2 md:mb-3">You're on the list!</h3>
+            <p className="text-sm md:text-base text-slate-600">
               Thank you for joining, <span className="font-bold text-brand-600">{name}</span>. We'll notify you as soon as a spot opens up in our private beta.
             </p>
           </motion.div>
         ) : (
-          <div className="bg-white p-8 md:p-10 rounded-[2.5rem] shadow-2xl shadow-brand-900/5 border border-slate-100 relative z-10">
-            <form onSubmit={handleSubmit} className="space-y-5 text-left">
+          <div className="bg-white p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] shadow-2xl shadow-brand-900/5 border border-slate-100 relative z-10">
+            <form onSubmit={handleSubmit} className="space-y-4 md:space-y-5 text-left">
               {!(import.meta.env.VITE_GOOGLE_FORM_ID || (process.env as any).VITE_GOOGLE_FORM_ID) && (
-                <div className="bg-amber-50 border border-amber-200 p-4 rounded-xl mb-6 text-amber-800 text-sm">
+                <div className="bg-amber-50 border border-amber-200 p-3 md:p-4 rounded-xl mb-4 md:mb-6 text-amber-800 text-[10px] md:text-sm">
                   <strong>Developer Note:</strong> Google Form ID is not set in Secrets. Submissions will be logged to the console but not sent to Sheets.
                 </div>
               )}
-              <div className="grid md:grid-cols-2 gap-5">
+              <div className="grid md:grid-cols-2 gap-4 md:gap-5">
                 <div>
-                  <label htmlFor="beta-name" className="block text-sm font-bold text-slate-700 mb-2 ml-1">Full Name / Clinic Name</label>
+                  <label htmlFor="beta-name" className="block text-xs md:text-sm font-bold text-slate-700 mb-1.5 md:mb-2 ml-1">Full Name / Clinic Name</label>
                   <input
                     type="text"
                     id="beta-name"
@@ -120,11 +120,11 @@ export default function BetaSignup({ id = "signup", className = "" }: BetaSignup
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="e.g. Jane Doe or Central Clinic"
-                    className="w-full px-6 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white transition-all text-lg"
+                    className="w-full px-5 py-3.5 md:px-6 md:py-4 bg-slate-50 border border-slate-200 rounded-xl md:rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white transition-all text-base md:text-lg"
                   />
                 </div>
                 <div>
-                  <label htmlFor="beta-email" className="block text-sm font-bold text-slate-700 mb-2 ml-1">Email Address</label>
+                  <label htmlFor="beta-email" className="block text-xs md:text-sm font-bold text-slate-700 mb-1.5 md:mb-2 ml-1">Email Address</label>
                   <input
                     type="email"
                     id="beta-email"
@@ -132,14 +132,14 @@ export default function BetaSignup({ id = "signup", className = "" }: BetaSignup
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="your@email.com"
-                    className="w-full px-6 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white transition-all text-lg"
+                    className="w-full px-5 py-3.5 md:px-6 md:py-4 bg-slate-50 border border-slate-200 rounded-xl md:rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white transition-all text-base md:text-lg"
                   />
                 </div>
               </div>
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-full py-5 bg-brand-600 text-white rounded-2xl font-bold text-xl transition-all shadow-xl shadow-brand-200 flex items-center justify-center gap-3 group ${isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:bg-brand-700'}`}
+                className={`w-full py-4 md:py-5 bg-brand-600 text-white rounded-xl md:rounded-2xl font-bold text-lg md:text-xl transition-all shadow-xl shadow-brand-200 flex items-center justify-center gap-3 group ${isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:bg-brand-700'}`}
               >
                 {isSubmitting ? (
                   <>
@@ -148,7 +148,7 @@ export default function BetaSignup({ id = "signup", className = "" }: BetaSignup
                   </>
                 ) : (
                   <>
-                    Join the Beta <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                    Join the Beta <ArrowRight className="w-5 h-5 md:w-6 md:h-6 group-hover:translate-x-1 transition-transform" />
                   </>
                 )}
               </button>
