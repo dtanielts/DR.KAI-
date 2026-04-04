@@ -152,9 +152,6 @@ export default function BetaSignup({ id = "signup", className = "" }: BetaSignup
                   </>
                 )}
               </button>
-              <p className="text-center text-xs text-slate-400 mt-6">
-                By joining, you agree to our <a href="#" className="underline hover:text-brand-600">Privacy Policy</a> and <a href="#" className="underline hover:text-brand-600">Terms of Service</a>.
-              </p>
             </form>
           </div>
         )}

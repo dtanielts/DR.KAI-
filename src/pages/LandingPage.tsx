@@ -35,11 +35,11 @@ export default function LandingPage() {
             </Link>
           </div>
           <div className="flex items-center gap-8">
-            <Link to="/doctor" className="text-sm font-bold text-slate-600 hover:text-brand-600 transition-colors">
-              For Clinicians
-            </Link>
             <Link to="/patient" className="text-sm font-bold text-slate-600 hover:text-brand-600 transition-colors">
               For Patients
+            </Link>
+            <Link to="/doctor" className="text-sm font-bold text-slate-600 hover:text-brand-600 transition-colors">
+              For Clinicians
             </Link>
             <a href="#signup" className="bg-brand-600 text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-brand-700 transition-all shadow-sm">
               Join Beta
@@ -88,55 +88,55 @@ export default function LandingPage() {
           </div>
 
           <div className="mt-32 grid md:grid-cols-2 gap-8">
-            {/* Doctor Path */}
+            {/* Patient Path */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
               <Link 
-                to="/doctor"
+                to="/patient"
                 className="group block p-8 md:p-12 rounded-[2.5rem] bg-brand-900 text-white hover:bg-brand-800 transition-all shadow-2xl shadow-brand-900/20 relative overflow-hidden h-full"
               >
                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-16 -mt-16 blur-2xl group-hover:bg-white/10 transition-colors"></div>
                 
                 <div className="relative z-10">
                   <div className="bg-brand-500 w-16 h-16 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
-                    <Stethoscope className="w-8 h-8 text-white" />
+                    <User className="w-8 h-8 text-white" />
                   </div>
-                  <h2 className="text-3xl font-bold mb-4">For Clinicians</h2>
+                  <h2 className="text-3xl font-bold mb-4">For Patients</h2>
                   <p className="text-brand-100 text-lg mb-8 leading-relaxed">
-                    Streamline your workflow, reduce admin time, and focus on what matters most: your patients.
+                    Manage your health records, prepare for visits, and stay connected with your care team securely.
                   </p>
                   <div className="flex flex-col gap-4">
                     <div className="flex items-center gap-2 font-bold text-brand-400 group-hover:text-white transition-colors">
-                      Enter Clinician Portal <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                      Enter Patient Portal <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </div>
                 </div>
               </Link>
             </motion.div>
 
-            {/* Patient Path */}
+            {/* Doctor Path */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
             >
               <Link 
-                to="/patient"
+                to="/doctor"
                 className="group block p-8 md:p-12 rounded-[2.5rem] bg-white border-2 border-slate-100 hover:border-brand-200 hover:shadow-2xl hover:shadow-brand-500/5 transition-all h-full"
               >
                 <div className="bg-brand-50 w-16 h-16 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
-                  <User className="w-8 h-8 text-brand-600" />
+                  <Stethoscope className="w-8 h-8 text-brand-600" />
                 </div>
-                <h2 className="text-3xl font-bold text-slate-900 mb-4">For Patients</h2>
+                <h2 className="text-3xl font-bold text-slate-900 mb-4">For Clinicians</h2>
                 <p className="text-slate-600 text-lg mb-8 leading-relaxed">
-                  Manage your health records, prepare for visits, and stay connected with your care team securely.
+                  Streamline your workflow, reduce admin time, and focus on what matters most: your patients.
                 </p>
                 <div className="flex flex-col gap-4">
                   <div className="flex items-center gap-2 font-bold text-brand-600">
-                    Enter Patient Portal <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    Enter Clinician Portal <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </div>
               </Link>
