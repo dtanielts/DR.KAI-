@@ -49,6 +49,7 @@ export default function DoctorPage() {
             <div className="hidden md:flex items-center gap-8">
               <a href="#features" className="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors">Features</a>
               <a href="#security" className="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors">Security</a>
+              <Link to="/demo" className="text-sm font-bold text-brand-600 hover:text-brand-700 transition-colors">Try Demo</Link>
               <a href="#signup" className="bg-brand-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-brand-700 transition-all shadow-sm">Join Beta</a>
             </div>
           </div>

@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LandingPage from './pages/LandingPage';
 import DoctorPage from './pages/DoctorPage';
 import PatientPage from './pages/PatientPage';
+import DemoPage from './pages/DemoPage';
 import JourneyMapPage from './pages/JourneyMapPage';
 import { useGoogleAnalytics } from './hooks/useGoogleAnalytics';
 
@@ -20,6 +21,7 @@ function AppContent() {
       <Route path="/" element={<LandingPage />} />
       <Route path="/doctor" element={<DoctorPage />} />
       <Route path="/patient" element={<PatientPage />} />
+      <Route path="/demo" element={<DemoPage />} />
       <Route path="/journey" element={<JourneyMapPage />} />
     </Routes>
   );

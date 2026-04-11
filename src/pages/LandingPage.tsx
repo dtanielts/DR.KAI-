@@ -45,6 +45,9 @@ export default function LandingPage() {
             <Link to="/doctor" className="hidden sm:block text-sm font-bold text-slate-600 hover:text-brand-600 transition-colors">
               Clinicians
             </Link>
+            <Link to="/demo" className="hidden sm:block text-sm font-bold text-brand-600 hover:text-brand-700 transition-colors">
+              Try Demo
+            </Link>
             <a href="#signup" className="bg-brand-600 text-white px-4 py-2 md:px-5 md:py-2 rounded-full text-xs md:text-sm font-bold hover:bg-brand-700 transition-all shadow-sm">
               Join Beta
             </a>
