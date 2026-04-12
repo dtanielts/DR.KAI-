@@ -26,6 +26,8 @@ interface ProcessStep {
 
 interface Sickness {
   name: string;
+  description: string;
+  summary: ClinicalSummary;
   standardProcess: ProcessStep[];
   drKaiProcess: ProcessStep[];
   standardTime: string;
@@ -36,6 +38,19 @@ const BODY_DATA: Record<BodyPart, Sickness[]> = {
   'Head & Brain': [
     {
       name: "Chronic Migraine",
+      description: "I'm experiencing intense throbbing pain on the left side of my head. It started this morning and is accompanied by sensitivity to light and sound. I've had similar episodes twice a month for the last year. Usually, they last about 24 hours.",
+      summary: {
+        summary: "Patient presents with an acute migraine episode characterized by unilateral throbbing pain and sensory hypersensitivity.",
+        symptoms: ["Unilateral throbbing pain (left side)", "Photophobia (light sensitivity)", "Phonophobia (sound sensitivity)", "24-hour duration"],
+        timeline: "Chronic pattern established over 12 months with a frequency of 2 episodes per month.",
+        questions: [
+          "Should we consider preventative medication given the frequency of episodes?",
+          "Are my current symptoms typical of migraine with or without aura?",
+          "Could there be specific hormonal or dietary triggers for these recurring pains?",
+          "What acute treatment options are most effective for 24-hour episodes?"
+        ],
+        disclaimer: "This is a pre-configured clinical summary for demonstration purposes only. Dr.Kai AI provides real-time analysis in the full application."
+      },
       standardProcess: [
         { text: "Call Healthcare Advice (1177)", time: "15-30 min" },
         { text: "Wait for callback", time: "2-4 hours" },
@@ -56,6 +71,19 @@ const BODY_DATA: Record<BodyPart, Sickness[]> = {
     },
     {
       name: "Acute Sinusitis",
+      description: "I've had a painful pressure behind my eyes and forehead for 4 days. My nose is completely blocked and I've lost my sense of smell. I feel a bit of a fever coming on and my teeth even hurt when I chew.",
+      summary: {
+        summary: "Patient reports acute rhinosinusitis symptoms with significant facial pressure and nasal obstruction.",
+        symptoms: ["Facial pressure (eyes/forehead)", "Nasal obstruction", "Anosmia (loss of smell)", "Dental pain", "Suspected fever"],
+        timeline: "Symptoms have progressed over 4 days, now affecting daily activities like eating.",
+        questions: [
+          "Is this likely viral or bacterial sinusitis?",
+          "Do I need antibiotics or can this be managed with saline and steroids?",
+          "How can I safely manage the facial pressure at home?",
+          "What symptoms should trigger an immediate follow-up visit?"
+        ],
+        disclaimer: "This is a pre-configured clinical summary for demonstration purposes only. Dr.Kai AI provides real-time analysis in the full application."
+      },
       standardProcess: [
         { text: "Check healthcare website", time: "10 min" },
         { text: "Call Health Center", time: "15 min" },
@@ -76,7 +104,20 @@ const BODY_DATA: Record<BodyPart, Sickness[]> = {
   ],
   'Chest & Heart': [
     {
-      name: "Persistent Bronchitis",
+      name: "Persistent Chest Cough",
+      description: "I've had a dry, hacking cough for about 2 weeks now. It's worse at night and when I'm lying down. I feel a bit of tightness in my chest, but no sharp pain. I haven't had a fever, but I've been feeling more tired than usual lately.",
+      summary: {
+        summary: "Patient reports a subacute non-productive cough with nocturnal worsening and associated chest tightness and fatigue.",
+        symptoms: ["Dry, hacking cough", "Nocturnal worsening", "Chest tightness", "General fatigue"],
+        timeline: "Symptoms have persisted for 14 days without fever, indicating a potential post-viral or respiratory sensitivity issue.",
+        questions: [
+          "Could this cough be related to asthma or seasonal allergies?",
+          "Does the chest tightness require a lung function test?",
+          "Is the fatigue a typical secondary symptom or does it require blood work?",
+          "Are there specific environmental triggers I should avoid at night?"
+        ],
+        disclaimer: "This is a pre-configured clinical summary for demonstration purposes only. Dr.Kai AI provides real-time analysis in the full application."
+      },
       standardProcess: [
         { text: "Healthcare Advice Triage", time: "20 min" },
         { text: "Health Center Booking", time: "10 min" },
@@ -97,7 +138,20 @@ const BODY_DATA: Record<BodyPart, Sickness[]> = {
   ],
   'Abdomen & Digestive': [
     {
-      name: "IBS Flare-up",
+      name: "Abdominal Discomfort / IBS",
+      description: "I've been feeling bloated and having intermittent cramping in my lower abdomen for the past week. It seems to happen shortly after eating. My bowel movements have been irregular. No fever or vomiting, but it's quite uncomfortable.",
+      summary: {
+        summary: "Patient reports acute abdominal discomfort including bloating and postprandial cramping with altered bowel habits.",
+        symptoms: ["Abdominal bloating", "Lower abdominal cramping", "Postprandial discomfort", "Irregular bowel movements"],
+        timeline: "Symptoms emerged 7 days ago and appear to be triggered by food intake.",
+        questions: [
+          "Do these symptoms suggest Irritable Bowel Syndrome (IBS) or a food intolerance?",
+          "Should I keep a detailed food diary for the next two weeks?",
+          "Are there specific diagnostic tests needed to rule out inflammatory issues?",
+          "What immediate dietary modifications might help alleviate the bloating?"
+        ],
+        disclaimer: "This is a pre-configured clinical summary for demonstration purposes only. Dr.Kai AI provides real-time analysis in the full application."
+      },
       standardProcess: [
         { text: "Healthcare Advice Call", time: "15 min" },
         { text: "Health Center Visit", time: "30 min" },
@@ -116,7 +170,20 @@ const BODY_DATA: Record<BodyPart, Sickness[]> = {
   ],
   'Back & Spine': [
     {
-      name: "Lower Back Pain / Sciatica",
+      name: "Severe Lower Back Pain",
+      description: "I've been having a sharp pain in my lower back for 3 days. It gets worse when I sit down or try to lift anything. I also feel a bit of numbness in my left leg, specifically around the calf area. I haven't had any recent injuries, but I do sit at a desk for 8 hours a day.",
+      summary: {
+        summary: "Patient presents with acute-onset sharp lower back pain and neurological symptoms in the left lower extremity.",
+        symptoms: ["Sharp lower back pain", "Numbness in left calf", "Pain exacerbated by sitting", "Pain exacerbated by lifting"],
+        timeline: "Symptoms appeared 3 days ago and have remained persistent, likely related to prolonged sedentary posture at work.",
+        questions: [
+          "Is this pain likely related to a disc issue or muscular strain?",
+          "Should I undergo an MRI or X-ray to rule out nerve compression?",
+          "Are there specific ergonomic adjustments I should make to my workspace?",
+          "What is the recommended balance between rest and mobility for this type of pain?"
+        ],
+        disclaimer: "This is a pre-configured clinical summary for demonstration purposes only. Dr.Kai AI provides real-time analysis in the full application."
+      },
       standardProcess: [
         { text: "Healthcare Advice", time: "15 min" },
         { text: "Wait for GP Visit", time: "5 days" },
@@ -137,6 +204,19 @@ const BODY_DATA: Record<BodyPart, Sickness[]> = {
   'Limbs & Joints': [
     {
       name: "Knee Sprain",
+      description: "I twisted my knee while jogging yesterday. It's swollen and I can't put full weight on it. There's a dull ache that turns sharp when I try to bend it past 90 degrees.",
+      summary: {
+        summary: "Patient presents with acute knee trauma following a twisting injury with associated edema and weight-bearing limitations.",
+        symptoms: ["Knee swelling (edema)", "Inability to bear full weight", "Dull ache", "Sharp pain on flexion > 90°"],
+        timeline: "Injury occurred < 24 hours ago during physical activity.",
+        questions: [
+          "Is there a high suspicion of a ligamentous tear (ACL/MCL)?",
+          "Should I follow the RICE protocol strictly for the next 48 hours?",
+          "Is an immediate X-ray or MRI necessary to assess structural damage?",
+          "What are the signs of vascular or nerve compromise I should watch for?"
+        ],
+        disclaimer: "This is a pre-configured clinical summary for demonstration purposes only. Dr.Kai AI provides real-time analysis in the full application."
+      },
       standardProcess: [
         { text: "Healthcare Advice Call", time: "15 min" },
         { text: "Health Center Visit", time: "30 min" },
@@ -164,93 +244,18 @@ interface ClinicalSummary {
   disclaimer: string;
 }
 
-const SUMMARIZER_SCENARIOS = [
-  {
-    name: "Severe Lower Back Pain",
-    description: "I've been having a sharp pain in my lower back for 3 days. It gets worse when I sit down or try to lift anything. I also feel a bit of numbness in my left leg, specifically around the calf area. I haven't had any recent injuries, but I do sit at a desk for 8 hours a day.",
-    summary: {
-      summary: "Patient presents with acute-onset sharp lower back pain and neurological symptoms in the left lower extremity.",
-      symptoms: ["Sharp lower back pain", "Numbness in left calf", "Pain exacerbated by sitting", "Pain exacerbated by lifting"],
-      timeline: "Symptoms appeared 3 days ago and have remained persistent, likely related to prolonged sedentary posture at work.",
-      questions: [
-        "Is this pain likely related to a disc issue or muscular strain?",
-        "Should I undergo an MRI or X-ray to rule out nerve compression?",
-        "Are there specific ergonomic adjustments I should make to my workspace?",
-        "What is the recommended balance between rest and mobility for this type of pain?"
-      ],
-      disclaimer: "This is a pre-configured clinical summary for demonstration purposes only. Dr.Kai AI provides real-time analysis in the full application."
-    }
-  },
-  {
-    name: "Persistent Chest Cough",
-    description: "I've had a dry, hacking cough for about 2 weeks now. It's worse at night and when I'm lying down. I feel a bit of tightness in my chest, but no sharp pain. I haven't had a fever, but I've been feeling more tired than usual lately.",
-    summary: {
-      summary: "Patient reports a subacute non-productive cough with nocturnal worsening and associated chest tightness and fatigue.",
-      symptoms: ["Dry, hacking cough", "Nocturnal worsening", "Chest tightness", "General fatigue"],
-      timeline: "Symptoms have persisted for 14 days without fever, indicating a potential post-viral or respiratory sensitivity issue.",
-      questions: [
-        "Could this cough be related to asthma or seasonal allergies?",
-        "Does the chest tightness require a lung function test?",
-        "Is the fatigue a typical secondary symptom or does it require blood work?",
-        "Are there specific environmental triggers I should avoid at night?"
-      ],
-      disclaimer: "This is a pre-configured clinical summary for demonstration purposes only. Dr.Kai AI provides real-time analysis in the full application."
-    }
-  },
-  {
-    name: "Recurring Migraines",
-    description: "I'm experiencing intense throbbing pain on the left side of my head. It started this morning and is accompanied by sensitivity to light and sound. I've had similar episodes twice a month for the last year. Usually, they last about 24 hours.",
-    summary: {
-      summary: "Patient presents with an acute migraine episode characterized by unilateral throbbing pain and sensory hypersensitivity.",
-      symptoms: ["Unilateral throbbing pain (left side)", "Photophobia (light sensitivity)", "Phonophobia (sound sensitivity)", "24-hour duration"],
-      timeline: "Chronic pattern established over 12 months with a frequency of 2 episodes per month.",
-      questions: [
-        "Should we consider preventative medication given the frequency of episodes?",
-        "Are my current symptoms typical of migraine with or without aura?",
-        "Could there be specific hormonal or dietary triggers for these recurring pains?",
-        "What acute treatment options are most effective for 24-hour episodes?"
-      ],
-      disclaimer: "This is a pre-configured clinical summary for demonstration purposes only. Dr.Kai AI provides real-time analysis in the full application."
-    }
-  },
-  {
-    name: "Abdominal Discomfort",
-    description: "I've been feeling bloated and having intermittent cramping in my lower abdomen for the past week. It seems to happen shortly after eating. My bowel movements have been irregular. No fever or vomiting, but it's quite uncomfortable.",
-    summary: {
-      summary: "Patient reports acute abdominal discomfort including bloating and postprandial cramping with altered bowel habits.",
-      symptoms: ["Abdominal bloating", "Lower abdominal cramping", "Postprandial discomfort", "Irregular bowel movements"],
-      timeline: "Symptoms emerged 7 days ago and appear to be triggered by food intake.",
-      questions: [
-        "Do these symptoms suggest Irritable Bowel Syndrome (IBS) or a food intolerance?",
-        "Should I keep a detailed food diary for the next two weeks?",
-        "Are there specific diagnostic tests needed to rule out inflammatory issues?",
-        "What immediate dietary modifications might help alleviate the bloating?"
-      ],
-      disclaimer: "This is a pre-configured clinical summary for demonstration purposes only. Dr.Kai AI provides real-time analysis in the full application."
-    }
-  }
-];
-
 export default function DemoPage() {
-  const [selectedScenario, setSelectedScenario] = useState<typeof SUMMARIZER_SCENARIOS[0] | null>(null);
-  const [result, setResult] = useState<ClinicalSummary | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  // Dropdown States
   const [selectedBodyPart, setSelectedBodyPart] = useState<BodyPart | ''>('');
   const [selectedSickness, setSelectedSickness] = useState<Sickness | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSummarize = async () => {
-    if (!selectedScenario) return;
-    
+  const handleSelectSickness = (sickness: Sickness) => {
     setIsLoading(true);
-    setError(null);
-    setResult(null);
-
-    // Simulate a brief loading state for realism
+    setSelectedSickness(null);
+    
+    // Simulate analysis time
     setTimeout(() => {
-      setResult(selectedScenario.summary);
+      setSelectedSickness(sickness);
       setIsLoading(false);
     }, 800);
   };
@@ -290,9 +295,8 @@ export default function DemoPage() {
           </div>
         </div>
       </nav>
-
       <main className="flex-grow py-12 px-4">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="text-center mb-16">
             <motion.div
@@ -306,88 +310,167 @@ export default function DemoPage() {
               Experience the Dr.Kai Difference
             </h1>
             <p className="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-              Explore how Dr.Kai transforms the patient journey. 
-              Select a body part and condition to compare the standard healthcare process with the Dr.Kai optimized path.
+              Select a body region and a patient scenario to see how Dr.Kai simultaneously generates a clinical summary and optimizes the entire care journey.
             </p>
           </div>
 
-          {/* Journey Comparison Section */}
-          <section className="mb-24">
-            <div className="max-w-4xl mx-auto">
-              {/* Dropdown Selection */}
-              <div className="bg-white p-8 rounded-[2.5rem] shadow-xl shadow-slate-200/50 border border-slate-100 mb-12">
-                <div className="grid md:grid-cols-2 gap-6">
-                  {/* Body Part Selection */}
-                  <div>
-                    <label htmlFor="body-part-select" className="block text-sm font-bold text-slate-400 uppercase tracking-widest mb-4">
-                      1. Select Body Region
-                    </label>
-                    <div className="relative">
-                      <select
-                        id="body-part-select"
-                        className="w-full p-5 bg-slate-50 border border-slate-200 rounded-2xl appearance-none focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all text-lg font-bold text-slate-700 cursor-pointer"
-                        value={selectedBodyPart}
-                        onChange={(e) => {
-                          setSelectedBodyPart(e.target.value as BodyPart);
-                          setSelectedSickness(null);
-                        }}
-                      >
-                        <option value="" disabled>Choose region...</option>
-                        {bodyParts.map((part) => (
-                          <option key={part} value={part}>{part}</option>
-                        ))}
-                      </select>
-                      <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none">
-                        <ChevronRight className="w-6 h-6 text-slate-400 rotate-90" />
-                      </div>
+          {/* Selection Section */}
+          <div className="max-w-4xl mx-auto mb-16">
+            <div className="bg-white p-8 rounded-[2.5rem] shadow-xl shadow-slate-200/50 border border-slate-100">
+              <div className="grid md:grid-cols-2 gap-6">
+                {/* Body Part Selection */}
+                <div>
+                  <label htmlFor="body-part-select" className="block text-sm font-bold text-slate-400 uppercase tracking-widest mb-4">
+                    1. Select Body Region
+                  </label>
+                  <div className="relative">
+                    <select
+                      id="body-part-select"
+                      className="w-full p-5 bg-slate-50 border border-slate-200 rounded-2xl appearance-none focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all text-lg font-bold text-slate-700 cursor-pointer"
+                      value={selectedBodyPart}
+                      onChange={(e) => {
+                        setSelectedBodyPart(e.target.value as BodyPart);
+                        setSelectedSickness(null);
+                      }}
+                    >
+                      <option value="" disabled>Choose region...</option>
+                      {bodyParts.map((part) => (
+                        <option key={part} value={part}>{part}</option>
+                      ))}
+                    </select>
+                    <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none">
+                      <ChevronRight className="w-6 h-6 text-slate-400 rotate-90" />
                     </div>
                   </div>
+                </div>
 
-                  {/* Sickness Selection */}
-                  <div>
-                    <label htmlFor="sickness-select" className="block text-sm font-bold text-slate-400 uppercase tracking-widest mb-4">
-                      2. Select Condition
-                    </label>
-                    <div className="relative">
-                      <select
-                        id="sickness-select"
-                        disabled={!selectedBodyPart}
-                        className={`w-full p-5 bg-slate-50 border border-slate-200 rounded-2xl appearance-none focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all text-lg font-bold text-slate-700 cursor-pointer ${!selectedBodyPart ? 'opacity-50 cursor-not-allowed' : ''}`}
-                        onChange={(e) => {
-                          if (selectedBodyPart) {
-                            const selected = BODY_DATA[selectedBodyPart].find(s => s.name === e.target.value);
-                            setSelectedSickness(selected || null);
-                          }
-                        }}
-                        value={selectedSickness?.name || ""}
-                      >
-                        <option value="" disabled>Choose condition...</option>
-                        {selectedBodyPart && BODY_DATA[selectedBodyPart].map((sickness) => (
-                          <option key={sickness.name} value={sickness.name}>
-                            {sickness.name}
-                          </option>
-                        ))}
-                      </select>
-                      <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none">
-                        <ChevronRight className="w-6 h-6 text-slate-400 rotate-90" />
-                      </div>
+                {/* Sickness Selection */}
+                <div>
+                  <label htmlFor="sickness-select" className="block text-sm font-bold text-slate-400 uppercase tracking-widest mb-4">
+                    2. Select Scenario
+                  </label>
+                  <div className="relative">
+                    <select
+                      id="sickness-select"
+                      disabled={!selectedBodyPart}
+                      className={`w-full p-5 bg-slate-50 border border-slate-200 rounded-2xl appearance-none focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all text-lg font-bold text-slate-700 cursor-pointer ${!selectedBodyPart ? 'opacity-50 cursor-not-allowed' : ''}`}
+                      onChange={(e) => {
+                        if (selectedBodyPart) {
+                          const selected = BODY_DATA[selectedBodyPart].find(s => s.name === e.target.value);
+                          if (selected) handleSelectSickness(selected);
+                        }
+                      }}
+                      value={selectedSickness?.name || ""}
+                    >
+                      <option value="" disabled>Choose scenario...</option>
+                      {selectedBodyPart && BODY_DATA[selectedBodyPart].map((sickness) => (
+                        <option key={sickness.name} value={sickness.name}>
+                          {sickness.name}
+                        </option>
+                      ))}
+                    </select>
+                    <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none">
+                      <ChevronRight className="w-6 h-6 text-slate-400 rotate-90" />
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
 
-              {/* Comparison View */}
-              <AnimatePresence mode="wait">
-                {selectedSickness ? (
-                  <motion.div
-                    key={selectedSickness.name}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    className="grid md:grid-cols-2 gap-8"
-                  >
+          {/* Loading State */}
+          <AnimatePresence>
+            {isLoading && (
+              <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="flex flex-col items-center justify-center py-20"
+              >
+                <Loader2 className="w-12 h-12 text-brand-600 animate-spin mb-4" />
+                <p className="text-slate-500 font-bold uppercase tracking-widest text-sm">Dr.Kai is analyzing the case...</p>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* Integrated Result View */}
+          <AnimatePresence mode="wait">
+            {selectedSickness && !isLoading && (
+              <motion.div
+                key={selectedSickness.name}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                className="grid lg:grid-cols-12 gap-8"
+              >
+                {/* Left Column: Clinical Summary */}
+                <div className="lg:col-span-5 space-y-6">
+                  <div className="bg-white p-8 rounded-[3rem] border border-slate-100 shadow-xl shadow-slate-200/50">
+                    <div className="flex items-center justify-between mb-8">
+                      <div className="flex items-center gap-3">
+                        <div className="p-2 bg-brand-600 rounded-xl">
+                          <Stethoscope className="w-5 h-5 text-white" />
+                        </div>
+                        <h3 className="text-xl font-bold text-slate-900 m-0">Clinical Summary</h3>
+                      </div>
+                      <span className="text-[10px] font-bold uppercase tracking-widest text-brand-600 bg-brand-50 px-3 py-1 rounded-full border border-brand-100">
+                        AI Structured
+                      </span>
+                    </div>
+
+                    <div className="space-y-6">
+                      {/* Summary Card */}
+                      <div className="bg-slate-50 p-6 rounded-3xl border border-slate-100">
+                        <h4 className="text-xs font-bold text-brand-600 uppercase tracking-widest mb-3">Assessment</h4>
+                        <p className="text-slate-700 leading-relaxed text-sm m-0">{selectedSickness.summary.summary}</p>
+                      </div>
+
+                      {/* Symptoms & Timeline */}
+                      <div className="grid sm:grid-cols-2 gap-4">
+                        <div className="bg-slate-50 p-6 rounded-3xl border border-slate-100">
+                          <h4 className="text-xs font-bold text-brand-600 uppercase tracking-widest mb-4">Key Symptoms</h4>
+                          <div className="space-y-2">
+                            {selectedSickness.summary.symptoms.map((symptom, i) => (
+                              <div key={i} className="flex items-center gap-2 text-slate-700">
+                                <div className="w-1.5 h-1.5 rounded-full bg-brand-400 shrink-0" />
+                                <span className="text-xs font-medium">{symptom}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                        <div className="bg-slate-50 p-6 rounded-3xl border border-slate-100">
+                          <h4 className="text-xs font-bold text-brand-600 uppercase tracking-widest mb-3">Timeline</h4>
+                          <p className="text-xs text-slate-700 leading-relaxed m-0">{selectedSickness.summary.timeline}</p>
+                        </div>
+                      </div>
+
+                      {/* Questions Card */}
+                      <div className="bg-brand-50 p-6 rounded-3xl border border-brand-100">
+                        <h4 className="text-xs font-bold text-brand-700 uppercase tracking-widest mb-4">Questions for Clinician</h4>
+                        <div className="space-y-3">
+                          {selectedSickness.summary.questions.map((q, i) => (
+                            <div key={i} className="flex items-start gap-3 bg-white p-3 rounded-xl border border-brand-100 shadow-sm">
+                              <div className="w-5 h-5 rounded-full bg-brand-100 text-brand-700 text-[10px] flex items-center justify-center shrink-0 font-bold">{i + 1}</div>
+                              <span className="text-xs text-slate-700 font-medium leading-tight">{q}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="mt-6 p-4 bg-slate-50 rounded-2xl border border-slate-100">
+                      <p className="text-[9px] text-slate-400 italic m-0 leading-relaxed">
+                        {selectedSickness.summary.disclaimer}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right Column: Process Comparison */}
+                <div className="lg:col-span-7 space-y-6">
+                  <div className="grid md:grid-cols-2 gap-6 h-full">
                     {/* Standard Process */}
-                    <div className="bg-white p-8 md:p-10 rounded-[3rem] border border-slate-100 shadow-sm relative overflow-hidden">
+                    <div className="bg-white p-8 rounded-[3rem] border border-slate-100 shadow-sm relative overflow-hidden flex flex-col">
                       <div className="absolute top-0 right-0 p-6 opacity-5">
                         <Clock className="w-32 h-32 text-slate-900" />
                       </div>
@@ -395,27 +478,27 @@ export default function DemoPage() {
                         <div className="p-2.5 bg-slate-100 rounded-xl">
                           <Clock className="w-6 h-6 text-slate-500" />
                         </div>
-                        <h4 className="font-bold text-slate-900 uppercase tracking-wider text-sm">Standard Process</h4>
+                        <h4 className="font-bold text-slate-900 uppercase tracking-wider text-sm">Standard Journey</h4>
                       </div>
-                      <div className="space-y-6 mb-10">
+                      <div className="space-y-5 mb-10 flex-grow">
                         {selectedSickness.standardProcess.map((step, i) => (
                           <div key={i} className="flex items-start gap-4">
                             <div className="w-6 h-6 rounded-full bg-slate-100 text-slate-400 text-xs flex items-center justify-center shrink-0 mt-0.5 font-bold">{i + 1}</div>
                             <div className="flex flex-col">
-                              <span className="text-base text-slate-700 leading-snug font-medium">{step.text}</span>
-                              {step.time && <span className="text-xs text-slate-400 font-bold uppercase tracking-wider mt-1">{step.time}</span>}
+                              <span className="text-sm text-slate-700 leading-snug font-medium">{step.text}</span>
+                              {step.time && <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mt-1">{step.time}</span>}
                             </div>
                           </div>
                         ))}
                       </div>
-                      <div className="pt-8 border-t border-slate-50">
-                        <div className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Total Estimated Time</div>
-                        <div className="text-3xl font-bold text-slate-400">{selectedSickness.standardTime}</div>
+                      <div className="pt-6 border-t border-slate-50">
+                        <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Total Estimated Time</div>
+                        <div className="text-2xl font-bold text-slate-400">{selectedSickness.standardTime}</div>
                       </div>
                     </div>
 
                     {/* Dr. Kai Process */}
-                    <div className="bg-brand-600 p-8 md:p-10 rounded-[3rem] text-white shadow-2xl shadow-brand-500/20 relative overflow-hidden">
+                    <div className="bg-brand-600 p-8 rounded-[3rem] text-white shadow-2xl shadow-brand-500/20 relative overflow-hidden flex flex-col">
                       <div className="absolute top-0 right-0 p-6 opacity-10">
                         <Zap className="w-32 h-32 text-white" />
                       </div>
@@ -423,218 +506,46 @@ export default function DemoPage() {
                         <div className="p-2.5 bg-white/20 rounded-xl backdrop-blur-sm">
                           <Zap className="w-6 h-6 text-white" />
                         </div>
-                        <h4 className="font-bold text-white uppercase tracking-wider text-sm">Dr.Kai Process</h4>
+                        <h4 className="font-bold text-white uppercase tracking-wider text-sm">Dr.Kai Journey</h4>
                       </div>
-                      <div className="space-y-6 mb-10">
+                      <div className="space-y-5 mb-10 flex-grow">
                         {selectedSickness.drKaiProcess.map((step, i) => (
                           <div key={i} className="flex items-start gap-4">
                             <div className="w-6 h-6 rounded-full bg-white/20 text-white text-xs flex items-center justify-center shrink-0 mt-0.5 font-bold">{i + 1}</div>
                             <div className="flex flex-col">
-                              <span className="text-base text-white leading-snug font-bold">{step.text}</span>
-                              {step.time && <span className="text-xs text-brand-200 font-bold uppercase tracking-wider mt-1">{step.time}</span>}
+                              <span className="text-sm text-white leading-snug font-bold">{step.text}</span>
+                              {step.time && <span className="text-[10px] text-brand-200 font-bold uppercase tracking-wider mt-1">{step.time}</span>}
                             </div>
                           </div>
                         ))}
                       </div>
-                      <div className="pt-8 border-t border-white/10">
-                        <div className="text-xs font-bold text-brand-200 uppercase tracking-widest mb-2">Total Estimated Time</div>
-                        <div className="text-3xl font-bold text-white flex items-center gap-3">
+                      <div className="pt-6 border-t border-white/10">
+                        <div className="text-[10px] font-bold text-brand-200 uppercase tracking-widest mb-1">Total Estimated Time</div>
+                        <div className="text-2xl font-bold text-white flex items-center gap-3">
                           {selectedSickness.drKaiTime}
-                          <span className="text-xs bg-white/20 px-3 py-1 rounded-full font-bold uppercase tracking-widest">85% Faster</span>
+                          <span className="text-[10px] bg-white/20 px-3 py-1 rounded-full font-bold uppercase tracking-widest">85% Faster</span>
                         </div>
                       </div>
                     </div>
-                  </motion.div>
-                ) : (
-                  <motion.div 
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    className="text-center p-16 bg-white rounded-[3rem] border border-dashed border-slate-200"
-                  >
-                    <div className="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center mx-auto mb-6">
-                      <Activity className="w-10 h-10 text-slate-300" />
-                    </div>
-                    <h3 className="text-2xl font-bold text-slate-900 mb-2">Select a Region & Condition</h3>
-                    <p className="text-slate-500">Choose a body region first, then a specific condition to see the comparison.</p>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          </section>
-
-          {/* AI Summarizer Section */}
-          <section className="mb-24">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-slate-900 mb-4">Try the AI Summarizer</h2>
-              <p className="text-slate-600 max-w-2xl mx-auto">
-                Select a patient scenario to see how Dr.Kai structures clinical information for doctors.
-              </p>
-            </div>
-            
-            <div className="grid gap-8">
-              {/* Input Section */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-                className="bg-white p-6 md:p-8 rounded-[2.5rem] shadow-xl shadow-slate-200/50 border border-slate-100"
-              >
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="p-2 bg-brand-100 rounded-xl">
-                    <MessageSquare className="w-5 h-5 text-brand-600" />
-                  </div>
-                  <h2 className="text-xl font-bold text-slate-900">Select Scenario</h2>
-                </div>
-                
-                <div className="relative mb-8">
-                  <select
-                    id="scenario-select"
-                    className="w-full p-5 bg-slate-50 border border-slate-200 rounded-2xl appearance-none focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all text-lg font-bold text-slate-700 cursor-pointer"
-                    onChange={(e) => {
-                      const scenario = SUMMARIZER_SCENARIOS.find(s => s.name === e.target.value);
-                      setSelectedScenario(scenario || null);
-                      setResult(null);
-                    }}
-                    defaultValue=""
-                  >
-                    <option value="" disabled>Choose a patient scenario...</option>
-                    {SUMMARIZER_SCENARIOS.map((scenario) => (
-                      <option key={scenario.name} value={scenario.name}>
-                        {scenario.name}
-                      </option>
-                    ))}
-                  </select>
-                  <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none">
-                    <ChevronRight className="w-6 h-6 text-slate-400 rotate-90" />
                   </div>
                 </div>
-
-                {selectedScenario && (
-                  <motion.div 
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    className="mb-8 p-6 bg-slate-50 rounded-2xl border border-slate-100"
-                  >
-                    <h4 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Patient Description</h4>
-                    <p className="text-slate-600 italic leading-relaxed">"{selectedScenario.description}"</p>
-                  </motion.div>
-                )}
-
-                <button
-                  onClick={handleSummarize}
-                  disabled={isLoading || !selectedScenario}
-                  className={`w-full py-4 bg-brand-600 text-white rounded-2xl font-bold text-lg transition-all shadow-lg shadow-brand-200 flex items-center justify-center gap-3 group ${isLoading || !selectedScenario ? 'opacity-50 cursor-not-allowed' : 'hover:bg-brand-700'}`}
-                >
-                  {isLoading ? (
-                    <>
-                      <Loader2 className="w-6 h-6 animate-spin" />
-                      Analyzing with Dr.Kai...
-                    </>
-                  ) : (
-                    <>
-                      Generate Clinical Summary <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                    </>
-                  )}
-                </button>
               </motion.div>
+            )}
 
-              {/* Result Section */}
-              <AnimatePresence>
-                {(result || error) && (
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
-                    className={`p-6 md:p-8 rounded-[2.5rem] border ${error ? 'bg-red-50 border-red-100' : 'bg-white border-brand-100 shadow-2xl shadow-brand-500/10'}`}
-                  >
-                    {error ? (
-                      <div className="flex items-center gap-3 text-red-700">
-                        <AlertCircle className="w-6 h-6" />
-                        <p className="font-medium">{error}</p>
-                      </div>
-                    ) : (
-                      <div className="prose prose-slate max-w-none">
-                        <div className="flex items-center justify-between mb-8">
-                          <div className="flex items-center gap-3">
-                            <div className="p-2 bg-brand-600 rounded-xl">
-                              <Stethoscope className="w-5 h-5 text-white" />
-                            </div>
-                            <h3 className="text-xl font-bold text-slate-900 m-0">Dr.Kai Clinical Summary</h3>
-                          </div>
-                          <span className="text-[10px] font-bold uppercase tracking-widest text-brand-600 bg-brand-50 px-3 py-1 rounded-full border border-brand-100">
-                            AI Generated
-                          </span>
-                        </div>
-                        
-                        <div className="grid md:grid-cols-2 gap-6 mb-10">
-                          {/* Summary Card */}
-                          <div className="bg-slate-50 p-6 rounded-3xl border border-slate-100 md:col-span-2">
-                            <h4 className="text-xs font-bold text-brand-600 uppercase tracking-widest mb-3">Summary of Concerns</h4>
-                            <p className="text-slate-700 leading-relaxed m-0">{result.summary}</p>
-                          </div>
-
-                          {/* Symptoms Table/List */}
-                          <div className="bg-slate-50 p-6 rounded-3xl border border-slate-100">
-                            <h4 className="text-xs font-bold text-brand-600 uppercase tracking-widest mb-4">Key Symptoms</h4>
-                            <div className="space-y-2">
-                              {result.symptoms.map((symptom, i) => (
-                                <div key={i} className="flex items-center gap-3 text-slate-700">
-                                  <div className="w-1.5 h-1.5 rounded-full bg-brand-400 shrink-0" />
-                                  <span className="text-sm font-medium">{symptom}</span>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-
-                          {/* Timeline Card */}
-                          <div className="bg-slate-50 p-6 rounded-3xl border border-slate-100">
-                            <h4 className="text-xs font-bold text-brand-600 uppercase tracking-widest mb-3">Timeline</h4>
-                            <p className="text-sm text-slate-700 leading-relaxed m-0">{result.timeline}</p>
-                          </div>
-
-                          {/* Questions Card */}
-                          <div className="bg-brand-50 p-6 rounded-3xl border border-brand-100 md:col-span-2">
-                            <h4 className="text-xs font-bold text-brand-700 uppercase tracking-widest mb-4">Suggested Questions for Doctor</h4>
-                            <div className="grid sm:grid-cols-2 gap-4">
-                              {result.questions.map((q, i) => (
-                                <div key={i} className="flex items-start gap-3 bg-white p-4 rounded-2xl border border-brand-100 shadow-sm">
-                                  <div className="w-6 h-6 rounded-full bg-brand-100 text-brand-700 text-[10px] flex items-center justify-center shrink-0 font-bold">{i + 1}</div>
-                                  <span className="text-sm text-slate-700 font-medium leading-tight">{q}</span>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="p-4 bg-slate-50 rounded-2xl border border-slate-100 mb-8">
-                          <p className="text-[10px] text-slate-400 italic m-0 leading-relaxed">
-                            {result.disclaimer}
-                          </p>
-                        </div>
-
-                        <div className="mt-12 pt-8 border-t border-slate-100 flex flex-col md:flex-row items-center justify-between gap-6">
-                          <div className="flex items-center gap-4">
-                            <div className="p-2 bg-slate-100 rounded-lg">
-                              <ShieldCheck className="w-5 h-5 text-slate-500" />
-                            </div>
-                            <p className="text-sm text-slate-500 max-w-xs">
-                              This summary is encrypted and processed according to EU healthcare standards.
-                            </p>
-                          </div>
-                          <Link 
-                            to="/#signup" 
-                            className="px-6 py-3 bg-slate-900 text-white rounded-xl font-bold text-sm hover:bg-slate-800 transition-all"
-                          >
-                            Join Beta for Full Access
-                          </Link>
-                        </div>
-                      </div>
-                    )}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          </section>
+            {!selectedSickness && !isLoading && (
+              <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="text-center p-20 bg-white rounded-[4rem] border border-dashed border-slate-200 shadow-sm"
+              >
+                <div className="w-24 h-24 bg-slate-50 rounded-full flex items-center justify-center mx-auto mb-8">
+                  <Activity className="w-12 h-12 text-slate-300" />
+                </div>
+                <h3 className="text-3xl font-bold text-slate-900 mb-4 tracking-tight">Select a Case Study</h3>
+                <p className="text-slate-500 text-lg max-w-md mx-auto">Choose a body region and scenario above to see how Dr.Kai optimizes the clinical experience.</p>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           {/* Demo Features */}
           <div className="mt-24 grid md:grid-cols-3 gap-6">
@@ -655,17 +566,18 @@ export default function DemoPage() {
                 desc: "Every interaction is protected by medical-grade end-to-end encryption."
               }
             ].map((feature, idx) => (
-              <div key={idx} className="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm">
-                <div className="w-12 h-12 bg-brand-50 text-brand-600 rounded-2xl flex items-center justify-center mb-4">
+              <div key={idx} className="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm">
+                <div className="w-14 h-14 bg-brand-50 text-brand-600 rounded-2xl flex items-center justify-center mb-6">
                   {feature.icon}
                 </div>
-                <h3 className="font-bold text-slate-900 mb-2">{feature.title}</h3>
+                <h3 className="text-lg font-bold text-slate-900 mb-3">{feature.title}</h3>
                 <p className="text-sm text-slate-500 leading-relaxed">{feature.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </main>
+
 
       {/* Footer */}
       <footer className="bg-white py-12 border-t border-slate-100">
